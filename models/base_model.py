@@ -34,7 +34,7 @@ class BaseModel:
         instance_dict['created_at'] = self.created_at.isoformat()
         instance_dict['updated_at'] = self.updated_at.isoformat()
         return instance_dict
-    
+
     def __init__(self, *args, **kwargs):
         """initiates a new instance with the attributes"""
         if kwargs:
