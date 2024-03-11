@@ -21,7 +21,6 @@ class Place(BaseModel):
     longitude = 0.0
     amenity_ids = []
 
-
     def __str__(self):
         '''print the documentation of the class'''
         new_dict = self.__dict__.copy()
