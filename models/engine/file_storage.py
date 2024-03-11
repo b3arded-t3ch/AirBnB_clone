@@ -3,14 +3,15 @@
 Manages the serialisation and deserialisation of BaseModel objects
 """
 import json
-from models.base_model import BaseModel 
+from models.base_model import BaseModel
 from models.place import Place
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
-from models.review import Review 
+from models.review import Review
 from models.user import User
 import os
+
 
 class FileStorage:
     """The base class for encoding and decoding process"""
@@ -24,13 +25,11 @@ class FileStorage:
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
         name_of_class = obj.__class__.__name__
-        #name_of_class = obj.__class__
         key = f"{name_of_class}.{obj.id}"
         self.__objects[key] = obj
 
     def save(self):
         """serializes __objects to the JSON file"""
-        
         __objects_dict = {
                 key: value.to_dict()
                 for key, value in self.__objects.items()
@@ -44,6 +43,20 @@ class FileStorage:
 
     def reload(self):
         """deserializes the JSON file to __objects"""
+        if self.__file_path:
+            try:
+                with open(self.__file_path, 'r') as old_file:
+                    dict_load = json.load(old_file)
+                    new_dict = {}
+                    for key, value in dict_load.items():
+                        class_name = value['__class__']
+                        class_obj = eval(class_name)
+                        instance_str = class_obj(**value)
+                        new_dict[key] = instance_str
+                    self.__objects = new_dict
+            except Exception as e:
+                pass
+        '''
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, 'r', encoding="utf-8") as json_file:
                 try:
@@ -55,3 +68,4 @@ class FileStorage:
                         self.__object[k] = instnc
                 except Exception:
                     pass
+        '''
