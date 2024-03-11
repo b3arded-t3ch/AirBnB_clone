@@ -48,4 +48,3 @@ class BaseModel:
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
             models.storage.new(self)
-            print(self)
