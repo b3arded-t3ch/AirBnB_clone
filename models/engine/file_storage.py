@@ -35,6 +35,7 @@ class FileStorage:
                 key: value.to_dict()
                 for key, value in self.__objects.items()
                 } 
+        '''
         with open(self.__file_path, 'w') as file:
             json.dump(__objects_dict, file)
         '''
@@ -44,7 +45,6 @@ class FileStorage:
             return True
         except (OSError, TypeError) as e:
             return False
-        '''
 
     def reload(self):
         """deserializes the JSON file to __objects"""
