@@ -1,13 +1,15 @@
 #!/usr/bin/python3
-import cmd, sys
+import cmd
+import sys
 from models.base_model import BaseModel
-from models.user import User  
-from models.review import Review 
-from models.state import State  
+from models.user import User
+from models.review import Review
+from models.state import State
 from models.city import City
 from models.place import Place
-from models.amenity import Amenity  
+from models.amenity import Amenity
 from models import storage
+
 
 class HBNBCommand(cmd.Cmd):
     '''HBNB command processor'''
@@ -26,14 +28,15 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, class_name):
         '''
-        Creates a new instance of BaseModel, 
+        Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id
         '''
         if not class_name:
             print("** class name missing **")
         elif class_name != "BaseModel" and class_name != "User" and\
-        class_name != "Place" and class_name != "State" and class_name != "City" and\
-        class_name != "Review" and class_name != "Amenity":
+                class_name != "Place" and class_name != "State" and\
+                class_name != "City" and class_name != "Review" and\
+                class_name != "Amenity":
             print("** class doesn't exist **")
         else:
             if class_name == "BaseModel":
@@ -67,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, class_detail):
         '''
-        Prints the string representation of an 
+        Prints the string representation of an
         instance based on the class name and
         '''
         if not class_detail:
@@ -76,8 +79,9 @@ class HBNBCommand(cmd.Cmd):
         split_update = class_detail.split()
         class_name = split_update[0]
         if class_name != "BaseModel" and class_name != "User" and\
-        class_name != "Place" and class_name != "State" and class_name != "City" and\
-        class_name != "Review" and class_name != "Amenity":
+                class_name != "Place" and class_name != "State" and\
+                class_name != "City" and class_name != "Review" and\
+                class_name != "Amenity":
             print("** class doesn't exist **")
             return
         if len(split_update) != 2:
@@ -103,8 +107,9 @@ class HBNBCommand(cmd.Cmd):
         split_update = destroy_data.split()
         class_name = split_update[0]
         if class_name != "BaseModel" and class_name != "User" and\
-        class_name != "Place" and class_name != "State" and class_name != "City" and\
-        class_name != "Amenity" and class_name != "Review":
+                class_name != "Place" and class_name != "State" and\
+                class_name != "City" and class_name != "Amenity" and\
+                class_name != "Review":
             print("** class doesn't exist **")
             return
         if len(split_update) != 2:
@@ -130,8 +135,9 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         if class_name != "BaseModel" and class_name != "User" and\
-        class_name != "Place" and class_name != "State" and\
-        class_name != "City" and class_name != "Amenity" and class_name != "Review":
+                class_name != "Place" and class_name != "State" and\
+                class_name != "City" and class_name != "Amenity" and\
+                class_name != "Review":
             print("** class doesn't exist **")
             return
 
@@ -157,8 +163,9 @@ class HBNBCommand(cmd.Cmd):
         split_update = update_data.split()
         class_name = split_update[0]
         if class_name != "BaseModel" and class_name != "User" and\
-        class_name != "Place" and class_name != "State" and class_name != "City" and\
-        class_name != "Amenity" and class_name != "Review": 
+                class_name != "Place" and class_name != "State" and\
+                class_name != "City" and class_name != "Amenity" and\
+                class_name != "Review": 
             print("** class doesn't exist **")
             return
         if not len(split_update) > 2:
@@ -186,7 +193,7 @@ class HBNBCommand(cmd.Cmd):
 
                 print("** attribute name missing **")
                 return
-    
+
     def do_User(self, class_data):
         '''
         retrieve all instances of a class
