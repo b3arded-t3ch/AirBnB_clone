@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+'''
+place class
+'''
 from models.base_model import BaseModel
 
 
