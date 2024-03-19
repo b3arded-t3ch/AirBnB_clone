@@ -1,0 +1,25 @@
+
+.places {
+        background-color: white;
+        height: 70px;
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        position: relative;
+}
+
+.places h1 {
+	font-size: 30px;
+}
+
+article {
+	width: 390px;
+	padding: 20px;
+	margin: 20px;
+	border: 1px solid #ff5a5f
+}
+article h2 {
+	font-size: 30px;
+	text-align: center;
+}
+
